@@ -14,7 +14,7 @@ EditText에 있는 소스코드를 하이라이팅할 수 있습니다.<br>
 1. Download .jar file.<br>
   .jar 파일을 다운로드 받습니다.
 
-[Download(다운로드)](https://github.com/DarkTornado/CodeHighlighter/raw/master/release/CodeHighlighter-v.1.0.jar)
+   [Download(다운로드)](https://github.com/DarkTornado/CodeHighlighter/raw/master/release/CodeHighlighter-v.1.0.jar)
 
 2. Add .jar file to libs folder in your project.<br>
   .jar 파일을 프로젝트 폴더 안에 있는 libs 폴더에 넣습니다.<br><br>
@@ -84,4 +84,14 @@ Set highlight color that will be applied to annotation.<br>
 Apply Highlighting<br>
 하이라이팅 적용
 
+## License (라이선스)
 
+ - Using .jar File → Allowed. You should write as "Code Highlighter made by Dark Tornado is used." in your product(?). It just has to include Library's name and Developer.
+ - Editing Source Code → Allowed.
+ - Editing Source Code and Distribution → Contact to Developer First
+ - Commercial Use → Contact to Developer First
+<br><br>
+ - .jar 파일 사용 → 허용. 결과물에 "Dark Tornado가 만든 Code Highlighter가 사용되었습니다."와 같이 표기. 라이브러리(?) 이름이랑 만든사람만 포함되면 됨.
+ - 소스 코드 수정 → 허용
+ - 소스 코드 수정 후 배포 → 개발자에게 미리 연락
+ - 상업적 이용 → 개발자에게 미리 연락

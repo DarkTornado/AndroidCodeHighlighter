@@ -39,48 +39,59 @@ EditText에 있는 소스코드를 하이라이팅할 수 있습니다.<br>
 
 ## API
 
+<b>import com.darktornado.CodeHighlighter</b>
+
+
 - <b>new CodeHighlighter();</b><br>
 Create CodeHighlighter instance.<br>
 CodeHighlighter 인스턴스 생성
 <br>
 
-- <b>.addReservedWord(String word);</b><br>
+- <b>String CodeHighlighter.VERSION</b><br>
+CodeHighlighter's Version.<br>
+CodeHighlighter의 버전.
+
+- <b>String CodeHighlighter.DEVELOPER</b><br>
+CodeHighlighter's Developer's Name.<br>
+CodeHighlighter의 개발자의 이름.
+
+- <b>void .addReservedWord(String word);</b><br>
 Add reserved word to highlight.<br>
 하이라이팅할 예약어 추가.
 
-- <b>.addReservedWord(String word, int color);</b><br>
+- <b>void .addReservedWord(String word, int color);</b><br>
 Add reserved word to highlight. Can choose highlight color.<br>
 하이라이팅할 예약어 추가. 하이라이팅 색상도 선택 가능.
 
-- <b>.removeReservedWord(String word);</b><br>
+- <b>void .removeReservedWord(String word);</b><br>
 Remove reserved word from list which will be highlight(?).<br>
 하이라이팅될 예약어 목록에서 해당 예약어 삭제.
 
-- <b>.clearReservedWord();</b><br>
+- <b>void .clearReservedWord();</b><br>
 Clear reserved words to highlight.<br>
 하이라이팅할 모든 예약어 삭제.
 
-- <b>.setReservedWordHighlightColor(int color);</b><br>
+- <b>void .setReservedWordHighlightColor(int color);</b><br>
 Set highlight color that will be applied to reserved word. It will not be applied to reserved word that was added by using .addReservedWord(String word, int color);<br>
 예약어 하이라이팅에 사용될 색상 설정. .addReservedWord(String word, int color);로 추가한 예약어에는 적용되지 않음.
 
-- <b>.setReservedWordHighlightColor(int color);</b><br>
+- <b>void .setReservedWordHighlightColor(int color);</b><br>
 Set highlight color that will be applied to reserved word.<br>
 예약어 하이라이팅에 사용될 색상 설정.
 
-- <b>.setNumberHighlightColor(int color);</b><br>
+- <b>void .setNumberHighlightColor(int color);</b><br>
 Set highlight color that will be applied to number.<br>
 숫자 하이라이팅에 사용될 색상 설정.
 
-- <b>.setStringHighlightColor(int color);</b><br>
+- <b>void .setStringHighlightColor(int color);</b><br>
 Set highlight color that will be applied to string.<br>
 문자열 하이라이팅에 사용될 색상 설정.
 
-- <b>.setAnnotationHighlightColor(int color);</b><br>
+- <b>void .setAnnotationHighlightColor(int color);</b><br>
 Set highlight color that will be applied to annotation.<br>
 주석 하이라이팅에 사용될 색상 설정.
 
-- <b>.apply(Editable s);</b><br>
+- <b>void .apply(Editable s);</b><br>
 Apply Highlighting<br>
 하이라이팅 적용
 

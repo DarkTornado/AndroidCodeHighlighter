@@ -1,4 +1,4 @@
-# Code Highlighter
+# Android Code Highlighter
 
 © 2018 Dark Tornado, All rights reserved.
 

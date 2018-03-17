@@ -14,7 +14,7 @@ EditText에 있는 소스코드를 하이라이팅할 수 있습니다.<br>
 1. Download .jar file.<br>
   .jar 파일을 다운로드 받습니다.
 
-   [Download(다운로드)](https://github.com/DarkTornado/CodeHighlighter/raw/master/release/CodeHighlighter-v.1.0.jar)
+   [Download(다운로드)](https://github.com/DarkTornado/CodeHighlighter/raw/master/release/CodeHighlighter-v.1.1.jar)
 
 2. Add .jar file to libs folder in your project.<br>
   .jar 파일을 프로젝트 폴더 안에 있는 libs 폴더에 넣습니다.<br><br>
@@ -74,10 +74,6 @@ Clear reserved words to highlight.<br>
 - <b>void .setReservedWordHighlightColor(int color);</b><br>
 Set highlight color that will be applied to reserved word. It will not be applied to reserved word that was added by using .addReservedWord(String word, int color);<br>
 예약어 하이라이팅에 사용될 색상 설정. .addReservedWord(String word, int color);로 추가한 예약어에는 적용되지 않음.
-
-- <b>void .setReservedWordHighlightColor(int color);</b><br>
-Set highlight color that will be applied to reserved word.<br>
-예약어 하이라이팅에 사용될 색상 설정.
 
 - <b>void .setNumberHighlightColor(int color);</b><br>
 Set highlight color that will be applied to number.<br>

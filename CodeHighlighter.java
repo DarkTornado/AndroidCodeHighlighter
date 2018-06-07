@@ -1,6 +1,6 @@
 /**
  * CodeHighlighter
- * Version 1.0
+ * Version 2.0
  * © 2018 Dark Tornado, All rights reserved.
  */
 
@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 public class CodeHighlighter {
 
-    public static String VERSION = "1.0";
-    public static String DEVELOPER = "DarkTornado";
+    public static final String VERSION = "2.0";
+    public static final String DEVELOPER = "Dark Tornado";
     private ArrayList<Highlighter> data = new ArrayList<>();
     private int blue = Color.argb(255, 21, 101, 192);
     private int red = Color.argb(255, 191, 54, 12);
@@ -40,7 +40,7 @@ public class CodeHighlighter {
     }
 
     private void initHighlightData() {
-        String[] blueData = {"function", "return", "var", "let", "const", "if", "else", "switch", "for", "while", "do", "break", "continue", "case", "in", "with", "true", "false", "new", "null", "undefined", "typeof", "delete", "try", "catch", "finally", "prototype", "this", "super"};
+        String[] blueData = {"function", "return", "var", "let", "const", "if", "else", "switch", "for", "while", "do", "break", "continue", "case", "in", "with", "true", "false", "new", "null", "undefined", "typeof", "delete", "try", "catch", "finally", "prototype", "this", "super", "default"};
         for (int n = 0; n < blueData.length; n++) {
             data.add(new Highlighter(blueData[n], -1));
         }
@@ -88,7 +88,7 @@ public class CodeHighlighter {
 
     public void apply(Editable s) {
         String str = s.toString();
-        if(str.length()==0) return;
+        if (str.length() == 0) return;
         ForegroundColorSpan spans[] = s.getSpans(0, s.length(), ForegroundColorSpan.class);
         for (int n = 0; n < spans.length; n++) {
             s.removeSpan(spans[n]);
@@ -124,7 +124,53 @@ public class CodeHighlighter {
         start = 0;
         while (start >= 0) {
             int index = str.indexOf("\"", start);
+            while (index > 0 && str.charAt(index - 1) == '\\') {
+                index = str.indexOf("\"", index + 1);
+            }
             int end = str.indexOf("\"", index + 1);
+            while (end > 0 && str.charAt(end - 1) == '\\') {
+                end = str.indexOf("\"", end + 1);
+            }
+            if (index >= 0 && end >= 0) {
+                ForegroundColorSpan[] span = s.getSpans(index, end + 1, ForegroundColorSpan.class);
+                if (span.length > 0) {
+                    if (str.substring(index + 1, end).contains("/*") && str.substring(index + 1, end).contains("*/")) {
+                        for (int n = 0; n < span.length; n++) {
+                            s.removeSpan(span[n]);
+                        }
+                        s.setSpan(new ForegroundColorSpan(brown),
+                                index, end + 1,
+                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    } else if (str.substring(index + 1, end).contains("//")) {
+                        span = s.getSpans(index, str.indexOf("\n", end), ForegroundColorSpan.class);
+                        for (int n = 0; n < span.length; n++) {
+                            s.removeSpan(span[n]);
+                        }
+                        s.setSpan(new ForegroundColorSpan(brown),
+                                index, end + 1,
+                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    }
+                } else {
+                    s.setSpan(new ForegroundColorSpan(brown),
+                            index, end + 1,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                }
+            } else {
+                end = -5;
+            }
+            start = end + 1;
+        }
+
+        start = 0;
+        while (start >= 0) {
+            int index = str.indexOf("'", start);
+            while (index > 0 && str.charAt(index - 1) == '\\') {
+                index = str.indexOf("'", index + 1);
+            }
+            int end = str.indexOf("'", index + 1);
+            while (end > 0 && str.charAt(end - 1) == '\\') {
+                end = str.indexOf("'", end + 1);
+            }
             if (index >= 0 && end >= 0) {
                 ForegroundColorSpan[] span = s.getSpans(index, end + 1, ForegroundColorSpan.class);
                 if (span.length > 0) {
@@ -195,20 +241,19 @@ public class CodeHighlighter {
     private boolean checkNumber(String str, int index) {
         int start = getStartPos(str, index);
         int end = getEndPos(str, index);
+        if (str.charAt(end - 1) == '.') return false;
         if (start == 0) {
             if (str.charAt(start) == '.') return false;
-            if (str.charAt(end - 1) == '.') return false;
             return isNumber(str.substring(start, end));
         } else {
             if (str.charAt(start + 1) == '.') return false;
-            if (str.charAt(end - 1) == '.') return false;
             return isNumber(str.substring(start + 1, end));
         }
     }
 
     private boolean isSplitPoint(char ch) {
         if (ch == '\n') return true;
-        return " []{}()+-*/%&|!?:;,<>=^~".contains(ch+"");
+        return " []{}()+-*/%&|!?:;,<>=^~".contains(ch + "");
     }
 
     private int getStartPos(String str, int index) {

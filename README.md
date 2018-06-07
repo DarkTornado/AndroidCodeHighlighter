@@ -14,7 +14,7 @@ EditText에 있는 소스코드를 하이라이팅할 수 있습니다.<br>
 1. Download .jar file.<br>
   .jar 파일을 다운로드 받습니다.
 
-   [Download(다운로드)](https://github.com/DarkTornado/CodeHighlighter/raw/master/release/CodeHighlighter-v.1.1.jar)
+   [Download(다운로드)](https://github.com/DarkTornado/CodeHighlighter/raw/master/release/CodeHighlighter-v.2.0.jar)
 
 2. Add .jar file to libs folder in your project.<br>
   .jar 파일을 프로젝트 폴더 안에 있는 libs 폴더에 넣습니다.<br><br>
